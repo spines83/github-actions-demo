@@ -7,5 +7,7 @@ jobs:
     steps:
       - name: Clean up
         run: |
+          GITHUB_REF_NAME=${{ github.event.ref }}
           echo "Clean up for branch ${{ github.event.ref }}"
           echo ${GITHUB_REF_NAME}
+          echo ${GITHUB_EVENT_REF}
