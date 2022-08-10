@@ -12,7 +12,6 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            echo " Hello from PR {{ github.event.pull_request.number }} "
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
