@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create Preview URL
+        env:
+          PULL_REQUEST_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           echo ${{ github.event.pull_request.head.ref }}
-          echo $GITHUB_REF_NAME
+          echo $PULL_REQUEST_HEAD_REF
+          echo $PULL_REQUEST_NUMBER
           echo ${{ github.event.pull_request.number }}
       - name: Post Preview URL 
         uses: actions/github-script@v5
