@@ -8,12 +8,6 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      # - name: prep
-      #   id: prep
-      #   shell: bash
-      #   run: | 
-      #     echo "issue number ${{ github.event.pull_request.number }}"
-      #     echo "::set-output name=pr-num::${{ github.event.pull_request.number }}"
       - uses: actions/github-script@v5
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -23,5 +17,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for reporting! h t t p s : // central-pr-${{context.issue.number}}. tkg . c o m'
+              body: format('👋 Thanks for reporting! h t t p s : // central-pr-{0}. tkg . c o m', context.issue.number)
             })
