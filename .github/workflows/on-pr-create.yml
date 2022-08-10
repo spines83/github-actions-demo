@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Create Preview URL
         run: |
-          echo ${{ github.event }}
+          echo ${{ github.event.pull_request.head.ref }}
           echo $GITHUB_REF_NAME
           echo ${{ github.event.pull_request.number }}
       - name: Post Preview URL 
