@@ -8,7 +8,11 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v5
+      - name: Create Preview URL
+        run: |
+          echo ${{ github.event.pull_request.number }}
+      - name: Post Preview URL 
+        uses: actions/github-script@v5
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
