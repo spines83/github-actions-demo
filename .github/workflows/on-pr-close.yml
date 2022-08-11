@@ -1,0 +1,11 @@
+name: Pull Request Close
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The pull request ${{ github.event.pull_request.number }} has been closed."
